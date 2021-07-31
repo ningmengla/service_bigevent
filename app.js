@@ -60,8 +60,13 @@ const artCateRouter = require('./router/artcate')
 // 为文章分类的路由挂载统一的访问前缀 /my/article
 app.use('/my/article', artCateRouter)
 
+// 导入并使用文章路由模块
+const articleRouter = require('./router/article')
+// 为文章的路由挂载统一的访问前缀 /my/article
+app.use('/my/article', articleRouter)
 
-
+// 托管静态资源文件
+app.use('/uploads', express.static('./uploads'))
 // 错误中间件
 app.use(function (err, req, res, next) {
     // 数据验证失败
